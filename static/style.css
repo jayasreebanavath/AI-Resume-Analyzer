@@ -1,0 +1,619 @@
+/* =========================
+   GENERAL STYLING
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc, #e0e7ff);
+    color: #1e293b;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* =========================
+   NAVIGATION BAR
+========================= */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #e0e7ff;
+    box-shadow: 0 4px 20px rgba(30, 41, 59, 0.07);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar h2 {
+    color: #4f46e5;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #475569;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #4f46e5;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+    text-align: center;
+    padding: 65px 20px;
+    background: linear-gradient(135deg, #4338ca, #6366f1, #818cf8);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 17px;
+    color: #eef2ff;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    max-width: 750px;
+    margin: 45px auto;
+    padding: 35px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.09);
+}
+
+.container h2 {
+    text-align: center;
+    color: #312e81;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.container p {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+label {
+    display: block;
+    margin: 22px 0 9px;
+    font-weight: 600;
+    color: #334155;
+    font-size: 15px;
+}
+
+input[type="file"],
+select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #f8fafc;
+    color: #334155;
+    transition: 0.3s ease;
+}
+
+input[type="file"]:hover,
+select:hover {
+    border-color: #818cf8;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+/* =========================
+   REQUIRED SKILLS
+========================= */
+
+#requiredSkills {
+    padding: 15px;
+    margin-top: 5px;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    color: #475569;
+    min-height: 50px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 28px;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #3730a3, #4f46e5);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(79, 70, 229, 0.25);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* =========================
+   RESULTS PAGE
+========================= */
+
+.results-container {
+    max-width: 1000px;
+    width: 90%;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.dashboard-header h2 {
+    color: #312e81;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.dashboard-header p {
+    color: #64748b;
+    margin-bottom: 0;
+}
+
+/* =========================
+   RESULT CARDS
+========================= */
+
+.result-card {
+    background: #ffffff;
+    border: 1px solid #e0e7ff;
+    border-radius: 16px;
+    padding: 25px;
+    margin-top: 22px;
+    box-shadow: 0 5px 18px rgba(30, 41, 59, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(79, 70, 229, 0.12);
+}
+
+.result-card h3 {
+    color: #312e81;
+    margin-bottom: 18px;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+/* =========================
+   MATCH CARD
+========================= */
+
+.match-card {
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff, #eef2ff);
+    border: 1px solid #c7d2fe;
+}
+
+.match-display {
+    margin: 15px auto 20px;
+}
+
+#matchPercentage {
+    color: #4f46e5;
+    font-size: 46px;
+    font-weight: 800;
+    margin-bottom: 0;
+}
+
+.match-display p {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.progress-container {
+    width: 100%;
+    height: 16px;
+    background: #e0e7ff;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #4f46e5, #818cf8);
+    border-radius: 20px;
+    transition: width 1s ease;
+}
+
+/* =========================
+   RESULTS GRID
+========================= */
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.results-grid .result-card {
+    margin-top: 22px;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+}
+
+.skills-list li {
+    padding: 9px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+    transition: transform 0.2s ease;
+}
+
+.skills-list li:hover {
+    transform: translateY(-2px);
+}
+
+.found li {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #86efac;
+}
+
+.missing li {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+/* =========================
+   PROJECTS, INTERNSHIPS,
+   ACTIVITIES AND CERTIFICATIONS
+========================= */
+
+#projects,
+#activities,
+{
+    padding-left: 25px;
+    margin-top: 12px;
+    display: block;
+    list-style: disc;
+}
+
+#projects li,
+#activities li,
+ {
+    margin-bottom: 12px;
+    line-height: 1.7;
+    color: #475569;
+    padding: 5px 0;
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   EMPTY MESSAGES
+========================= */
+
+.empty-message {
+    color: #94a3b8 !important;
+    font-style: italic;
+    font-weight: 400 !important;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 8px 12px !important;
+}
+
+/* =========================
+   IMPROVEMENT TIPS
+========================= */
+
+.tips-card {
+    background: linear-gradient(135deg, #ffffff, #fffbeb);
+    border-color: #fde68a;
+}
+
+.tips-card h3 {
+    color: #92400e;
+}
+
+#improvementTips {
+    padding-left: 25px;
+    margin-top: 12px;
+    display: block;
+}
+
+#improvementTips li {
+    margin-bottom: 12px;
+    line-height: 1.7;
+    color: #78350f;
+}
+
+/* =========================
+   PROFILE LINKS
+========================= */
+
+.profile-card {
+    background: linear-gradient(135deg, #ffffff, #eef2ff);
+}
+
+.profile-card p {
+    text-align: left;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+.profile-card a {
+    color: #4f46e5;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.profile-card a:hover {
+    color: #312e81;
+    text-decoration: underline;
+}
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+#downloadReport {
+    width: auto;
+    margin: 0;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#downloadReport:hover {
+    background: #3730a3;
+    transform: translateY(-2px);
+}
+
+.back-button a {
+    display: inline-block;
+    width: auto;
+    padding: 10px 20px;
+    background: white;
+    color: #4f46e5;
+    border: 1px solid #4f46e5;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.back-button a:hover {
+    background: #eef2ff;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   RESULTS SECTION
+========================= */
+
+#results {
+    margin-top: 35px;
+    padding: 25px;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+}
+
+#results h2 {
+    color: #312e81;
+    margin-bottom: 20px;
+}
+
+#results h3 {
+    margin: 20px 0 10px;
+    color: #334155;
+}
+
+#results pre {
+    padding: 15px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    font-size: 14px;
+    color: #475569;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* =========================
+   MOBILE RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 16px 5%;
+    }
+
+    .navbar h2 {
+        font-size: 19px;
+    }
+
+    .hero {
+        padding: 45px 15px;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .container {
+        width: 92%;
+        padding: 22px;
+        margin: 25px auto;
+    }
+
+    .container h2 {
+        font-size: 22px;
+    }
+
+    .results-container {
+        width: 94%;
+        padding: 18px;
+    }
+
+    .dashboard-header h2 {
+        font-size: 23px;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .result-card {
+        padding: 18px;
+        margin-top: 18px;
+    }
+
+    .result-card h3 {
+        font-size: 17px;
+    }
+
+    #matchPercentage {
+        font-size: 38px;
+    }
+
+    .skills-list {
+        gap: 8px;
+    }
+
+    .skills-list li {
+        font-size: 13px;
+    }
+
+    #results {
+        padding: 18px;
+    }
+
+    .back-button {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#downloadReport,
+.back-button a {
+    width: auto;
+    text-align: center;
+}
+}
+
+/* =========================
+   SMALL MOBILE SCREENS
+========================= */
+
+@media (max-width: 380px) {
+
+    .navbar h2 {
+        font-size: 17px;
+    }
+
+    .hero h1 {
+        font-size: 23px;
+    }
+
+    .results-container {
+        padding: 12px;
+    }
+
+    .result-card {
+        padding: 15px;
+    }
+}

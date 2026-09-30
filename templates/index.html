@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Analyzer</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2>AI Resume Analyzer</h2>
+        <a href="#home">Home</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Analyze Your Resume with AI</h1>
+        <p>
+            Discover your skills, identify missing skills
+            and improve your resume.
+        </p>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <h2>Resume Analysis</h2>
+        <p>Upload your resume and enter your job details.</p>
+
+        <form id="resumeForm">
+
+            <!-- Resume Upload -->
+            <label for="resume">Upload Your Resume (PDF)</label>
+            <input
+                type="file"
+                id="resume"
+                accept=".pdf"
+                required
+            >
+
+            <!-- Job Role -->
+            <label for="jobRole">Select Job Role</label>
+            <select id="jobRole" required>
+                <option value="">Select a job role</option>
+                <option value="Python Developer">
+                    Python Developer
+                </option>
+                <option value="Web Developer">
+                    Web Developer
+                </option>
+                <option value="AI ML Engineer">
+                    AI/ML Engineer
+                </option>
+                <option value="Full Stack Developer">
+                    Full Stack Developer
+                </option>
+            </select>
+
+            <!-- GitHub Profile -->
+            <label for="github">GitHub Profile URL</label>
+            <input
+                type="url"
+                id="github"
+                placeholder="https://github.com/username"
+            >
+
+            <!-- LinkedIn Profile -->
+            <label for="linkedin">LinkedIn Profile URL</label>
+            <input
+                type="url"
+                id="linkedin"
+                placeholder="https://linkedin.com/in/username"
+            >
+
+            <!-- Required Skills -->
+            <label>Required Skills</label>
+            <div id="requiredSkills">
+                Select a job role to view required skills.
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">
+                Analyze Resume
+            </button>
+
+        </form>
+
+        <!-- Results -->
+        <div id="results" style="display: none;">
+
+            <h2>Resume Analysis Results</h2>
+
+            <p id="jobRoleResult"></p>
+            <p id="textLength"></p>
+
+            <h3>Extracted Resume Text</h3>
+            <pre id="resumeText"></pre>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

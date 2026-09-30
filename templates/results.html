@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analyzer | Results</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2>AI Resume Analyzer</h2>
+        <a href="/">Home</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Resume Analysis Results</h1>
+        <p>Your resume analysis is ready. Explore your results below.</p>
+    </section>
+
+    <!-- Results Dashboard -->
+    <main class="container results-container">
+
+        <div class="dashboard-header">
+            <h2 id="jobRoleResult">Job Role</h2>
+            <p>Here is your resume analysis report.</p>
+        </div>
+
+        <!-- Match Percentage -->
+        <div class="result-card match-card">
+            <h3>Resume Match</h3>
+
+            <div class="match-display">
+                <h2 id="matchPercentage">0%</h2>
+                <p>Skills Match</p>
+            </div>
+
+            <div class="progress-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="results-grid">
+
+            <div class="result-card">
+                <h3>Skills Found</h3>
+                <ul id="skillsFound" class="skills-list found"></ul>
+            </div>
+
+            <div class="result-card">
+                <h3>Missing Skills</h3>
+                <ul id="missingSkills" class="skills-list missing"></ul>
+            </div>
+
+        </div>
+
+        <!-- Projects -->
+        <div class="result-card">
+            <h3>Projects</h3>
+            <ul id="projects" class="skills-list"></ul>
+        </div>
+
+
+        <!-- Activities -->
+        <div class="result-card">
+            <h3>Activities</h3>
+            <ul id="activities" class="skills-list"></ul>
+        </div>
+
+        <!-- Improvement Tips -->
+        <div class="result-card tips-card">
+            <h3>💡 Resume Improvement Tips</h3>
+            <ul id="improvementTips" class="skills-list"></ul>
+        </div>
+
+        <!-- Profile Links -->
+        <div class="result-card profile-card">
+            <h3>Profile Links</h3>
+
+            <p id="githubLink">
+                GitHub profile not provided.
+            </p>
+
+            <p id="linkedinLink">
+                LinkedIn profile not provided.
+            </p>
+        </div>
+
+        <div class="back-button">
+    <a href="/">Analyze Another Resume</a>
+</div>
+
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        const storedResult = sessionStorage.getItem("analysisResult");
+
+        let result = null;
+
+        try {
+            result = JSON.parse(storedResult);
+        } catch (error) {
+            console.error("Unable to read analysis results:", error);
+        }
+
+        if (result) {
+
+            // Job Role
+            document.getElementById("jobRoleResult").textContent =
+                result.job_role || "Resume Analysis";
+
+            // Match Percentage
+            const percentage = Math.min(
+                100,
+                Math.max(0, Number(result.match_percentage) || 0)
+            );
+
+            document.getElementById("matchPercentage").textContent =
+                percentage + "%";
+
+            document.getElementById("progressBar").style.width =
+                percentage + "%";
+
+            // Display list items
+            function displayList(id, items, message) {
+                const list = document.getElementById(id);
+                list.innerHTML = "";
+
+                if (Array.isArray(items) && items.length > 0) {
+                    items.forEach(item => {
+                        const li = document.createElement("li");
+                        li.textContent = item;
+                        list.appendChild(li);
+                    });
+                } else {
+                    const li = document.createElement("li");
+                    li.textContent = message;
+                    li.classList.add("empty-message");
+                    list.appendChild(li);
+                }
+            }
+
+            // Skills
+            displayList(
+                "skillsFound",
+                result.skills_found,
+                "No matching skills found."
+            );
+
+            displayList(
+                "missingSkills",
+                result.missing_skills,
+                "No missing skills."
+            );
+
+            // Projects
+            displayList(
+                "projects",
+                result.projects,
+                "No project details detected."
+            );;
+
+            // Activities
+            displayList(
+                "activities",
+                result.activities,
+                "No activities detected."
+            );
+            // Improvement Tips
+            displayList(
+                "improvementTips",
+                result.improvement_tips,
+                "No improvement tips available."
+            );
+
+            // Display Profile Links
+            function displayProfileLink(id, url, label) {
+                const container = document.getElementById(id);
+                container.innerHTML = "";
+
+                if (url) {
+                    try {
+                        const parsedUrl = new URL(url);
+
+                        if (
+                            parsedUrl.protocol === "https:" ||
+                            parsedUrl.protocol === "http:"
+                        ) {
+                            const link = document.createElement("a");
+                            link.href = parsedUrl.href;
+                            link.textContent = label;
+                            link.target = "_blank";
+                            link.rel = "noopener noreferrer";
+
+                            container.appendChild(link);
+                            return;
+                        }
+                    } catch (error) {
+                        console.error("Invalid profile URL:", error);
+                    }
+                }
+
+                container.textContent = label + " not provided.";
+            }
+
+            displayProfileLink(
+                "githubLink",
+                result.github,
+                "GitHub Profile"
+            );
+
+            displayProfileLink(
+                "linkedinLink",
+                result.linkedin,
+                "LinkedIn Profile"
+            );
+
+        } else {
+            document.querySelector(".results-container").innerHTML =
+                "<div class='result-card'>" +
+                "<h2>No analysis results found.</h2>" +
+                "<p>Please upload your resume and analyze it first.</p>" +
+                "<a href='/'>Go back to Home</a>" +
+                "</div>";
+        
+            }
+    </script>
+
+</body>
+</html>
